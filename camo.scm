@@ -10,7 +10,7 @@
  ;; Widgets and top level parameters
  SF-IMAGE      "Image"            0
  SF-DRAWABLE   "Drawable"         0
- SF-COLOR      "Top Color"        '(3 22 2)
+ SF-COLOR      "Top Color"        '(3 22 2) ; There is some strangeness here. Seems to be drawn transparent!?
  SF-COLOR      "Under Color"      '(144 142 44)
  SF-COLOR      "Under Color 2"    '(134 103 6)
  SF-COLOR      "Background Color" '(59 83 9)
