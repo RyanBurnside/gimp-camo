@@ -51,7 +51,7 @@
     ;; Set the backing background color
     (gimp-selection-none image)
     (gimp-context-set-foreground background-color)
-    (gimp-drawable-fill background-layer FOREGROUND-FILL)
+    (gimp-drawable-fill background-layer FILL-FOREGROUND)
 
     ;; Top Layer (small flecks of color)
     (gimp-selection-none image)
