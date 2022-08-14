@@ -20,7 +20,7 @@
 (script-fu-menu-register "script-fu-make-camo"
                          "<Image>/Script-Fu/")
 
-;; Accessory function for script-fu-make-camo 
+;; Accessory function for script-fu-make-camo
 (define (add-camo-layer image color roughness threshold name)
   (let* ((width (car (gimp-image-width image)))
          (height (car (gimp-image-height image)))
@@ -36,19 +36,20 @@
     (gimp-edit-bucket-fill new-layer BUCKET-FILL-FG LAYER-MODE-NORMAL-LEGACY 100 0 FALSE 0 0)
     (gimp-selection-invert image)
     (gimp-edit-cut new-layer)
+    (gimp-selection-none image)
     (gimp-context-pop)))
 
 ;; Main function
 (define (script-fu-make-camo image drawable top-color under-color under-color2 background-color roughness)
   (let* ((width (car (gimp-image-width image)))
          (height (car (gimp-image-height image)))
-         (background-layer (car (gimp-layer-new image width height 1 "Camo 4" 100 LAYER-MODE-NORMAL-LEGACY))))
+         (background-layer (car (gimp-layer-new image width height 1 "Camo 3" 100 LAYER-MODE-NORMAL-LEGACY))))
 
     (gimp-image-undo-group-start image)
     (gimp-context-push)
     (gimp-context-set-defaults)
 
-    ;; Add the 3 layers
+    ;; Add the background layer
     (gimp-image-add-layer image background-layer 0)
 
     ;; Set the backing background color
@@ -60,7 +61,7 @@
     (add-camo-layer image under-color2 roughness 0.5 "Camo 2")
     (add-camo-layer image under-color roughness 0.5 "Camo 1")
     (add-camo-layer image top-color roughness 0.55 "Camo 0")
-    
+
     (gimp-displays-flush)
     (gimp-context-pop)
     (gimp-image-undo-group-end image)))
